@@ -2,21 +2,21 @@ name: Mise a jour automatique de la Veille
 
 on:
   schedule:
-    - cron: '0 8 * * *' # S'exécute automatiquement tous les jours à 8h00
-  workflow_dispatch: # Permet de déclencher le script manuellement pour tester
+    - cron: '0 8 * * *'
+  workflow_dispatch:
 
 permissions:
-  contents: write # Autorise le bot à modifier le fichier README.md
+  contents: write
 
 jobs:
   update-veille:
     runs-on: ubuntu-latest
     steps:
       - name: Récupérer le code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurer Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
