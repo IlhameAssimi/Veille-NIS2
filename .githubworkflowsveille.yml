@@ -1,0 +1,32 @@
+name: Mise a jour automatique de la Veille
+
+on:
+  schedule:
+    - cron: '0 8 * * *' # S'exécute automatiquement tous les jours à 8h00
+  workflow_dispatch: # Permet de déclencher le script manuellement pour tester
+
+permissions:
+  contents: write # Autorise le bot à modifier le fichier README.md
+
+jobs:
+  update-veille:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v3
+
+      - name: Configurer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Exécuter le script
+        run: python script.py
+
+      - name: Enregistrer les modifications
+        run: |
+          git config --global user.name 'Bot Veille BTS'
+          git config --global user.email 'bot@github.com'
+          git add README.md
+          git commit -m "Auto: Mise à jour du tableau de veille" || exit 0
+          git push
