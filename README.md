@@ -1,4 +1,4 @@
-# 🛡️ Veille Automatique NIS 2 & Cybersécurité (BTS SIO)
+# 🛡️ Veille Automatique Cybersécurité (BTS SIO)
 
 *Mise à jour quotidienne automatique multi-sources via Python et GitHub Actions.*
 
